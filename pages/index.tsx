@@ -1,7 +1,8 @@
 // pages/index.tsx
 import Head from 'next/head';
-import Link from 'next/link';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/common/Navbar';
+import { Container, Typography } from '@mui/material';
+import ParkingLotComponent from '../components/parkingLot/ParkingLot';
 
 const Home: React.FC = () => {
   return (
@@ -13,20 +14,17 @@ const Home: React.FC = () => {
       </Head>
 
       <main>
-        <Navbar />
-        <h1>Welcome to the Parking Lot App</h1>
-        <p>
-          Go to{' '}
-          {/* <Link href="/parking-lot"> */}
-            {/* <a>Parking Lot Page</a>
-          </Link>{' '}
-          or{' '}
-          <Link href="/parking-manager">
-            <a>Parking Manager Page</a>
-          </Link> */}
-        </p>
+        <>
+          <Navbar />
+          <Container>
+            <Typography variant="h4" gutterBottom>
+              Parking Lot Page
+            </Typography>
+            <ParkingLotComponent />
+          </Container>
+        </>
       </main>
-    </div>
+    </div >
   );
 };
 

@@ -1,29 +1,25 @@
 // ParkingManagerPage.tsx
 import React, { useState } from 'react';
 import { Container, Typography } from '@mui/material';
-import Navbar from '../components/Navbar';
-import ParkingSlotTable from '../components/ParkingSlotTable';
+import Navbar from '../components/common/Navbar';
+import ParkingSlotTable from '../components/parkingManager/ParkingSlotTable';
+import { MockDataForParkingManager, SlotStatus } from '../definitions/parkingSlot';
 
 interface ParkingSlot {
   id: string;
-  status: 'available' | 'occupied' | 'maintenance';
+  status: string;
   vehicleName?: string;
   vehicleId?: string;
 }
 
 const ParkingManagerPage: React.FC = () => {
-  // Mock data for parking slots
-  const [parkingSlots, setParkingSlots] = useState<ParkingSlot[]>([
-    { id: '1', status: 'available', vehicleName: 'Civic' },
-    { id: '2', status: 'occupied', vehicleName: 'Prius', vehicleId: 'ABC123' },
-    { id: '3', status: 'maintenance', vehicleName: 'Cultus' },
-  ]);
 
-  // Function to toggle maintenance status of a parking slot
+  const [parkingSlots, setParkingSlots] = useState<ParkingSlot[]>(MockDataForParkingManager);
+
   const toggleMaintenance = (slotId: string) => {
     setParkingSlots(prevSlots =>
       prevSlots.map(slot =>
-        slot.id === slotId ? { ...slot, status: slot.status === 'maintenance' ? 'available' : 'maintenance' } : slot
+        slot.id === slotId ? { ...slot, status: slot.status === SlotStatus.Maintenance ? SlotStatus.Available : SlotStatus.Maintenance } : slot
       )
     );
   };

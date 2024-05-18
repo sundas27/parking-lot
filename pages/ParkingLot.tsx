@@ -1,8 +1,8 @@
 // ParkingLotPage.tsx
 import React from 'react';
 import { Container, Typography } from '@mui/material';
-import Navbar from '../components/Navbar';
-import ParkingLotComponent from '../components/ParkingLot';
+import Navbar from '../components/common/Navbar';
+import ParkingLot from '../components/parkingLot/ParkingLot';
 
 const ParkingLotPage: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const ParkingLotPage: React.FC = () => {
         <Typography variant="h4" gutterBottom>
           Parking Lot Page
         </Typography>
-        <ParkingLotComponent />
+        <ParkingLot />
       </Container>
     </>
   );
